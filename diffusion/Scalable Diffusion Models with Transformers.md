@@ -23,8 +23,10 @@ $p_\theta(x_{t-1}|x_t) = N(\mu_\theta(x_t), \sum_\theta(x_t))$, 神经网络用�
  $L(\theta) = -p(x_0|x_1) + \sum_tD_{KL}(q^*(x_{t-1}|x_t, x_0)||p_\theta(x_{t-1}|x_t))$
 
  $q^*$ 和 $p_\theta$ 是高斯分布， $D_{KL}$ 可以简化为求两个分布的均值和协方差。通过将 $\mu_\theta$ 重新参数化为噪声预测网络 $\epsilon_\theta$。因此模型可以被训练为预测噪音 $\epsilon_\theta(x_t)$跟基准噪音 $\epsilon_t$ 之间的均值方差
-   $ L_{simple}(\theta) = ||\epsilon_\theta(x_t) - \epsilon_t||_2^2$ 。
-一旦 $p_\theta$被学习出来，新图片的生成，初始化为 $x_t \sim N(0,I)$, 采样过程为 $x_{t-1} \sim p_\theta(x_{t-1}|x_t)$
+ 
+ $L_{simple}(\theta) = ||\epsilon_\theta(x_t) - \epsilon_t||^2$ 
+ 
+一旦 $p_\theta$ 被学习出来，新图片的生成，初始化为 $x_t \sim N(0,I)$, 采样过程为 $x_{t-1} \sim p_\theta(x_{t-1}|x_t)$
 
 #### Classifier-free guidance
 

@@ -10,7 +10,7 @@
 
 ### 2.1 Diffusion 公式推导
 
-高斯扩散模型假设前向的在真实数据中$x_0$加噪过程表示为 $q(x_t|x_0) = N(x_t;\sqrt{\bar\alpha_t}x_0,(1-\bar\alpha_t)I)$
+高斯扩散模型假设前向的在真实数据中 $x_0$ 加噪过程表示为 $q(x_t|x_0) = N(x_t;\sqrt{\bar\alpha_t}x_0,(1-\bar\alpha_t)I)$
 
 其中 $ \bar\alpha_t $ 为超参数。
 将上式化简后，

@@ -11,11 +11,9 @@
 ### 2.1 Diffusion 公式推导
 
 高斯扩散模型假设前向的在真实数据中$X_0$加噪过程表示为
+$ q(x_t|x_0) = \mathcal{N}(x_t;\sqrt{\bar\alpha_t}x_0,(1-\bar\alpha_t)I)$
 
-$
-q(x_t|x_0) = \mathcal{N}(x_t;\sqrt{\bar\alpha_t}x_0,(1-\bar\alpha_t)I)
-$
-其中$\bar\alpha_t$为超参数。
+其中 $\bar\alpha_t$ 为超参数。
 将上式化简后，
 $x_t = \sqrt{\bar\alpha_t}x_0 + \sqrt{1-\bar\alpha_t}\epsilon_t$.
 
@@ -51,11 +49,13 @@ DiT的输入是一个空间表示$z$（$256\times256\times3 图像，encode之�
 #### DiT block 设计
 
 * In-context conditioning
+
 ![context-conditioning](image/context_conditioning.png)
 
 将embedding 之后的t和c加入到输入中。
 
 * Cross-attention block
+
 ![cross-attention](image/cross_attention.png)
 
 将t和c扩充为2倍长度。Transformer block 在Multi-Head Self-Attention之后增加了一个 Multi-Head Cross-Attention。
@@ -102,6 +102,7 @@ DiT的输入是一个空间表示$z$（$256\times256\times3 图像，encode之�
 ### 不同DiT block对比实验
 
 ![ Comparing different conditioning strategies](image/condition_design.png)
+
 我们训练了四个DiT-XL/2 模型，每个模型采用不同的block设计，in-context, cross-attention, adaptive layer norm, adaLN-zero。
 我们测量了不同设计下的FID， adaLN-Zero block 获得了最低的FID。adaLN-zero 将每个DiT block 初始化为恒等函数，其性能优于adaLN。
 

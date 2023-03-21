@@ -86,7 +86,7 @@ DiT的输入是一个空间表示 $z$（ $256 \times 256 \times 3$ 图像，enco
 
 最后一个线性层参数初始化为0，其他层参照ViT的策略。
 
-优化算法为AdamW，学习率为 $1 \times 1o^{-4}$, 没有衰减设置， batch size 为256。仅有的数据增强为 horizon flips。
+优化算法为AdamW，学习率为 $1 \times 10^{-4}$, 没有衰减设置， batch size 为256。仅有的数据增强为 horizon flips。
 
 训练过程中的超参数为 model sizes 和 patch size。
 

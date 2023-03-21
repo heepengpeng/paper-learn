@@ -37,7 +37,7 @@ $p_\theta(x_{t-1}|x_t) = N(\mu_\theta(x_t), \sum_\theta(x_t))$, 神经网络用�
 直接在高分辨率的像素空间中训练扩散模型计算量会非常大。LDM将这个问题划分为两个阶段：
 
 * 利用自动编码器 $E$ 将图像压缩成更小的空间表示
-* 基于 $z = E(x)$ 训练扩散模型，而不是直接在$x$上训练。新图片的生成在得到 $z$ 之后，使用解码器 $D$ 将图片还原。
+* 基于 $z = E(x)$ 训练扩散模型，而不是直接在 $x$上训练。新图片的生成在得到 $z$ 之后，使用解码器 $D$ 将图片还原。
 
 ### 2.2 Diffusion Transformer架构设计
 
@@ -45,7 +45,7 @@ $p_\theta(x_{t-1}|x_t) = N(\mu_\theta(x_t), \sum_\theta(x_t))$, 神经网络用�
 
 #### Patchify
 
-DiT的输入是一个空间表示 $z$（ $256 \times 256 \times 3$ 图像，encode之后为  $32 \times 32 \times 4$。DiT的第一层是patchify，将空间输入转化为长度为T的token 序列。输入为$ I \times I \times C $ patchified 之后变为长度为T的序列。T的长度等于 $(I/p)^2$。
+DiT的输入是一个空间表示 $z$（ $256 \times 256 \times 3$ 图像，encode之后为  $32 \times 32 \times 4$。DiT的第一层是patchify，将空间输入转化为长度为T的token 序列。输入为 $I \times I \times C$ patchified 之后变为长度为T的序列。T的长度等于 $(I/p)^2$。
 
 #### DiT block 设计
 

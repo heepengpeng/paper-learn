@@ -12,7 +12,7 @@
 
 高斯扩散模型假设前向的在真实数据中 $x_0$ 加噪过程表示为 $q(x_t|x_0) = N(x_t;\sqrt{\bar\alpha_t}x_0,(1-\bar\alpha_t)I)$
 
-其中 $ \bar\alpha_t $ 为超参数。
+其中 $\bar\alpha_t$ 为超参数。
 将上式化简后，
 $x_t = \sqrt{\bar\alpha_t}x_0 + \sqrt{1-\bar\alpha_t}\epsilon_t$.
 

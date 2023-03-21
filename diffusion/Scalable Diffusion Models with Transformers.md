@@ -22,19 +22,19 @@ $p_\theta(x_{t-1}|x_t) = N(\mu_\theta(x_t), \sum_\theta(x_t))$, 神经网络用�
 损失函数为$x_0$的对数似然的变分下界：
  $L(\theta) = -p(x_0|x_1) + \sum_tD_{KL}(q^*(x_{t-1}|x_t, x_0)||p_\theta(x_{t-1}|x_t))$
 
- $q^*$ 和 $p_\theta$ 是高斯分布，$ D_{KL} $ 可以简化为求两个分布的均值和协方差。通过将 $\mu_\theta$ 重新参数化为噪声预测网络 $\epsilon_\theta$。因此模型可以被训练为预测噪音 $\epsilon_\theta(x_t)$跟基准噪音 $\epsilon_t$ 之间的均值方差
-  $L_{simple}(\theta) = ||\epsilon_\theta(x_t) - \epsilon_t||_2^2$。
+ $q^*$ 和 $p_\theta$ 是高斯分布， $D_{KL}$ 可以简化为求两个分布的均值和协方差。通过将 $\mu_\theta$ 重新参数化为噪声预测网络 $\epsilon_\theta$。因此模型可以被训练为预测噪音 $\epsilon_\theta(x_t)$跟基准噪音 $\epsilon_t$ 之间的均值方差
+   $ L_{simple}(\theta) = ||\epsilon_\theta(x_t) - \epsilon_t||_2^2$ 。
 一旦 $p_\theta$被学习出来，新图片的生成，初始化为 $x_t \sim N(0,I)$, 采样过程为 $x_{t-1} \sim p_\theta(x_{t-1}|x_t)$
 
 #### Classifier-free guidance
 
-有限制条件的扩散模型会输入额外的信息，例如类别标签 $c$ .逆向过程变成了 $p_\theta(x_{t-1}|x_t,c)$, $\epsilon_\theta$ 和 $\sum_\theta$ 受限于条件c。classifier-free guidance 能够在采样过程中找到x，使得$logp(x)的值很大$。
+有限制条件的扩散模型会输入额外的信息，例如类别标签 $c$ .逆向过程变成了 $p_\theta(x_{t-1}|x_t,c)$, $\epsilon_\theta$ 和 $\sum_\theta$ 受限于条件c。classifier-free guidance 能够在采样过程中找到x，使得 $logp(x)$ 的值很大。
 
 #### Latent diffusion models
 
 直接在高分辨率的像素空间中训练扩散模型计算量会非常大。LDM将这个问题划分为两个阶段：
 
-* 利用自动编码器$E$将图像压缩成更小的空间表示
+* 利用自动编码器 $E$ 将图像压缩成更小的空间表示
 * 基于 $z = E(x)$ 训练扩散模型，而不是直接在$x$上训练。新图片的生成在得到 $z$ 之后，使用解码器 $D$ 将图片还原。
 
 ### 2.2 Diffusion Transformer架构设计

@@ -1,4 +1,4 @@
-# Scalable Diffusion Models with Transformers
+# Scalable Diffusion Models with Transformers（DiT）
 
 ## 1. 前言
 

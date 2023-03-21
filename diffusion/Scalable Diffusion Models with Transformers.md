@@ -92,7 +92,7 @@ DiT的输入是一个空间表示 $z$（ $256 \times 256 \times 3$ 图像，enco
 
 ### Diffusion
 
-我们使用了来自Stable Diffusion预训练的自动编码器（VAE），VAE 编码器将$256 \times 256 \times 3$ RGB图像 转化为 $32 \times 32 \times 4$。 在采样结束后，使用 VAE 解码器将模型输出转化为图像。
+我们使用了来自Stable Diffusion预训练的自动编码器（VAE），VAE 编码器将 $256 \times 256 \times 3$ RGB图像 转化为 $32 \times 32 \times 4$。 在采样结束后，使用 VAE 解码器将模型输出转化为图像。
 
 ### 评价指标
 

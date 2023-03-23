@@ -1,4 +1,4 @@
-# Scalable Diffusion Models with Transformers
+# Scalable Diffusion Models with Transformers（DiT）
 
 ## 1. 前言
 
@@ -37,7 +37,7 @@ $p_\theta(x_{t-1}|x_t) = N(\mu_\theta(x_t), \sum_\theta(x_t))$, 神经网络用�
 直接在高分辨率的像素空间中训练扩散模型计算量会非常大。LDM将这个问题划分为两个阶段：
 
 * 利用自动编码器 $E$ 将图像压缩成更小的空间表示
-* 基于 $z = E(x)$ 训练扩散模型，而不是直接在$x$上训练。新图片的生成在得到 $z$ 之后，使用解码器 $D$ 将图片还原。
+* 基于 $z = E(x)$ 训练扩散模型，而不是直接在 $x$上训练。新图片的生成在得到 $z$ 之后，使用解码器 $D$ 将图片还原。
 
 ### 2.2 Diffusion Transformer架构设计
 
@@ -45,7 +45,7 @@ $p_\theta(x_{t-1}|x_t) = N(\mu_\theta(x_t), \sum_\theta(x_t))$, 神经网络用�
 
 #### Patchify
 
-DiT的输入是一个空间表示 $z$（ $256 \times 256 \times 3$ 图像，encode之后为  $32 \times 32 \times 4$。DiT的第一层是patchify，将空间输入转化为长度为T的token 序列。输入为$ I \times I \times C $ patchified 之后变为长度为T的序列。T的长度等于 $(I/p)^2$。
+DiT的输入是一个空间表示 $z$（ $256 \times 256 \times 3$ 图像，encode之后为  $32 \times 32 \times 4$。DiT的第一层是patchify，将空间输入转化为长度为T的token 序列。输入为 $I \times I \times C$ patchified 之后变为长度为T的序列。T的长度等于 $(I/p)^2$。
 
 #### DiT block 设计
 
@@ -86,13 +86,13 @@ DiT的输入是一个空间表示 $z$（ $256 \times 256 \times 3$ 图像，enco
 
 最后一个线性层参数初始化为0，其他层参照ViT的策略。
 
-优化算法为AdamW，学习率为 $1 \times 1o^{-4}$, 没有衰减设置， batch size 为256。仅有的数据增强为 horizon flips。
+优化算法为AdamW，学习率为 $1 \times 10^{-4}$, 没有衰减设置， batch size 为256。仅有的数据增强为 horizon flips。
 
 训练过程中的超参数为 model sizes 和 patch size。
 
 ### Diffusion
 
-我们使用了来自Stable Diffusion预训练的自动编码器（VAE），VAE 编码器将$256 \times 256 \times 3$ RGB图像 转化为 $32 \times 32 \times 4$。 在采样结束后，使用 VAE 解码器将模型输出转化为图像。
+我们使用了来自Stable Diffusion预训练的自动编码器（VAE），VAE 编码器将 $256 \times 256 \times 3$ RGB图像 转化为 $32 \times 32 \times 4$。 在采样结束后，使用 VAE 解码器将模型输出转化为图像。
 
 ### 评价指标
 

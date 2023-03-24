@@ -58,23 +58,23 @@ $L_t = ||\epsilon - \epsilon_\theta(X_t, t) ||^2 = ||\epsilon - \epsilon_\theta(
 
 ### 3.4 训练过程
 
-* repeat
-* $x_0 \sim q(X_0)$
-* $t \sim Uniform({1,...,T})$
-* $\epsilon \sim N(0, 1) $
-* 梯度下降
+1: repeat
+2: $x_0 \sim q(X_0)$
+3: $t \sim Uniform({1,...,T})$
+4: $\epsilon \sim N(0, 1) $
+5: 梯度下降
 
    $\Delta_\theta||\epsilon - \epsilon_\theta(\sqrt{\bar\alpha_t}X_0 + \sqrt{1-\bar\alpha_t}\epsilon, t)||^2$
-* 直到收敛
+6: 直到收敛
 
 ### 3.5 采样过程
 
-* $X_T \sim N(0, 1)$
-* for t=T,...,1 do
-* $\quad z \sim N(0, 1) \quad if \quad t \gt 1, else\quad z=0$
-* $\quad x_{t-1} = \frac{1}{\sqrt{\alpha_t}}(X_t - \frac{1-\alpha_t}{\sqrt{1-\bar\alpha_t}}\epsilon_\theta(X_t, t)) + \sigma_tZ$
-* end for
-* return $X_0$
+1：$X_T \sim N(0, 1)$
+2: for t=T,...,1 do
+3: $\quad$$z \sim N(0, 1) if t \gt 1, else\quad z=0$
+4: $\quad$ $x_{t-1} = \frac{1}{\sqrt{\alpha_t}}(X_t - \frac{1-\alpha_t}{\sqrt{1-\bar\alpha_t}}\epsilon_\theta(X_t, t)) + \sigma_tZ$
+5: end fot
+6: return $X_0$
 
 ## 4. 实验
 

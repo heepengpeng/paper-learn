@@ -59,12 +59,12 @@ $L_t = ||\epsilon - \epsilon_\theta(X_t, t) ||^2 = ||\epsilon - \epsilon_\theta(
 ### 3.4 训练过程
 
 * repeat
-* $x_0 \sim q(X_0)$
-* $t \sim Uniform({1,...,T})$
-* $\epsilon \sim N(0, 1) $
+* $\quad x_0 \sim q(X_0)$
+* $\quad t \sim Uniform({1,...,T})$
+* $\quad \epsilon \sim N(0, 1) $
 * 梯度下降
 
-   $\Delta_\theta||\epsilon - \epsilon_\theta(\sqrt{\bar\alpha_t}X_0 + \sqrt{1-\bar\alpha_t}\epsilon, t)||^2$
+   $\quad \Delta_\theta||\epsilon - \epsilon_\theta(\sqrt{\bar\alpha_t}X_0 + \sqrt{1-\bar\alpha_t}\epsilon, t)||^2$
 * 直到收敛
 
 ### 3.5 采样过程

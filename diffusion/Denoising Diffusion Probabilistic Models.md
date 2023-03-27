@@ -47,7 +47,7 @@ $\mu_\theta = \frac{1}{\sqrt{\alpha_t}}(X_t - \frac{\beta_t}{1-\alpha_t}\epsilon
 
 ### 2.3 目标函数
 
-$L_t = ||\epsilon - \epsilon_\theta(X_t, t) ||^2 = ||\epsilon - \epsilon_\theta(\sqrt{\bar\alpha_t}X_0 + \sqrt{(1-\bar\alpha_t)}\epsilon, t)||^2$
+$L_t = ||\epsilon - \epsilon_\theta(X_t,  t) ||^2 = ||\epsilon - \epsilon_\theta(\sqrt{\bar\alpha_t}X_0 + \sqrt{(1-\bar\alpha_t)}\epsilon, t)||^2$
 
 神经网络的学习参数是 $\epsilon_\theta$
 
@@ -73,4 +73,15 @@ $L_t = ||\epsilon - \epsilon_\theta(X_t, t) ||^2 = ||\epsilon - \epsilon_\theta(
 
 ## 4. 实验
 
+实验中设置T为1000，正向过程中的 $\beta$ 是一个常量， $\beta_1$ 到 $\beta_T$ 的取值为 $10^{-4}$ 到 $0.02$。
+
+相对于数据的范围为[-1,1],这些常数通常设置的很小，保证反向和正向过程的函数形式大致相同,同时保证 $X_T$处的信噪比尽可能的小。
+
+反向过程，我们使用U-Net作为骨干网络，参数跨时间共享。网络使用sin position embedding。
+
+实验结果如图所示
+![ddpm_CIFAR10Results](./image/ddpm_CIFAR10Results.png)
+
 ## 5. 结论
+
+我们的研究表明，使用扩散模型能够生成高质量的图片。

@@ -62,8 +62,9 @@ $y_c = F(x;\Theta) + Z(F(x+Z(c;\Theta_{z1};\Theta_c));\Theta_{z2})$
 
 我们推导一下零卷积层的梯度计算, $W$ 为零卷积层的权重， $B$为偏置， $I$ 为输入特征。
 
-$Z(I;{W,B})_{p,i} = B_i + \sum_j^cI_{p,i}W_{i,j}$。
-初始状态下$W=0, B=0, I_{p,i} \ne 0$。因此梯度为
+为 $Z(I; W,B)_{p,i} = B_i + \sum_j^c I_{p,i}W_{i,j}$
+
+初始状态下 $W=0, B=0, I_{p,i} \ne 0$ 。因此梯度为
 
 ![grad](./image/ControlNet_grad.png)
 
@@ -145,4 +146,5 @@ $L = E_{z_0, t, c_t, c_f, \epsilon \sim N(0,1)}[||\epsilon - \epsilon_\theta(z_t
 ## 5.局限性
 
 当语义解释错误时，模型可能难以生成正确的内容
+
 ![grad](./image/ControlNet_error.png)

@@ -62,7 +62,7 @@ $y_c = F(x;\Theta) + Z(F(x+Z(c;\Theta_{z1};\Theta_c));\Theta_{z2})$
 
 我们推导一下零卷积层的梯度计算, $W$ 为零卷积层的权重， $B$为偏置， $I$ 为输入特征。
 
-为 $Z(I; W,B)_{p,i} = B_i + \sum_j^c I_{p,i}W_{i,j}$
+![ContorlNet](./image/ControlNet_z.png)
 
 初始状态下 $W=0, B=0, I_{p,i} \ne 0$ 。因此梯度为
 
